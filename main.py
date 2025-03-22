@@ -3,6 +3,9 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, Session
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+
+
+
 app = FastAPI()
 # Configurar CORS
 app.add_middleware(
@@ -20,8 +23,6 @@ DATABASE_URL = "postgresql://postgres:YHwsefcnMtsNzrbulFAVunTfEfxjjAFY@mainline.
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 
-# Inicializar FastAPI
-app = FastAPI()
 
 # Dependencia para obtener la sesión de base de datos
 def get_db():
