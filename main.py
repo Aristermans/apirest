@@ -2,6 +2,16 @@ from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, Session
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
+app = FastAPI()
+# Configurar CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permitir todos los dominios (puedes restringirlo)
+    allow_credentials=True,
+    allow_methods=["*"],  # Permitir todos los métodos (GET, POST, DELETE, etc.)
+    allow_headers=["*"],  # Permitir todos los headers
+)
 
 # URL de conexión a PostgreSQL en Railway
 DATABASE_URL = "postgresql://postgres:YHwsefcnMtsNzrbulFAVunTfEfxjjAFY@mainline.proxy.rlwy.net:23902/railway"
